@@ -1,5 +1,5 @@
 # Photosynthesis_quantum-simulation_code
-Commented code used in the quantum simulation of photosynthesis at the Physics Engineering Master's dissertation, in University of Minho, by José Diogo Guimarães.
+Commented code used in the quantum simulation of photosynthesis at the Physics Engineering Master's dissertation, in University of Minho, by José Diogo da Costa Guimarães.
 
 Files:
 
