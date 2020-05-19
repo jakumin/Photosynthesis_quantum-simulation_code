@@ -1,0 +1,263 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9259,        255]
+NotebookOptionsPosition[      8673,        239]
+NotebookOutlinePosition[      9019,        254]
+CellTagsIndexPosition[      8976,        251]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"--", 
+     RowBox[{"--", " ", "Eigenvalues"}]}], " ", "and", " ", "eigenvectors", 
+    " ", 
+    RowBox[{
+     RowBox[{"equation", " ", "--"}], "--"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"eigenvalues", ",", "eigenvectors"}], "}"}], "=", 
+    RowBox[{"Eigensystem", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"x", ",", "j"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "y"}], "}"}]}], "}"}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Transpose", "[", 
+     RowBox[{"N", "[", 
+      RowBox[{"Normalize", " ", "/@", " ", "eigenvectors"}], "]"}], "]"}], 
+    " ", "//", "MatrixForm", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "See", " ", "the", " ", "basis", " ", "transformation", " ", "matrix", 
+      " ", "in", " ", "function", " ", "of", " ", "the", " ", "parameters"}], 
+     " ", "*)"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.7988117823818393`*^9, 3.79881179217622*^9}, {
+  3.7988118576070633`*^9, 3.7988118855555983`*^9}, {3.79881194553109*^9, 
+  3.7988119709154897`*^9}, {3.798812243170946*^9, 
+  3.7988122612340913`*^9}},ExpressionUUID->"21040572-7d22-498e-b370-\
+9870fd1b31ea"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"--", 
+     RowBox[{"--", " ", "Diagonalize"}]}], " ", "the", " ", 
+    RowBox[{"system", "'"}], "s", " ", "Hamiltonian", " ", "for", " ", "a", 
+    " ", "4", " ", "molecule", " ", 
+    RowBox[{
+     RowBox[{"system", " ", "--"}], "--"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"e0", "=", "13000."}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"e1", "=", "12900."}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"e2", "=", "12300."}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"e3", "=", "12200."}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"j01", "=", "126."}], ";", 
+    RowBox[{"(*", 
+     RowBox[{"j01", " ", "=", " ", "j23"}], "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"j02", "=", "16."}], ";", 
+    RowBox[{"(*", 
+     RowBox[{"j02", " ", "=", " ", "j13"}], "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"j03", "=", "5."}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"j12", "=", "132."}], ";"}], "\[IndentingNewLine]", "\n", 
+   RowBox[{
+    RowBox[{"hamiltonian", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"e0", ",", "j01", ",", "j02", ",", "j03"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j01", ",", "e1", ",", "j12", ",", "j02"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j02", ",", "j12", ",", "e2", ",", "j01"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j03", ",", "j02", ",", "j01", ",", "e3"}], "}"}]}], "}"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"hamiltonian", ";", " ", 
+    RowBox[{"(*", 
+     RowBox[{"check", " ", "the", " ", "Hamiltonian"}], "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"eigenvalues", ",", "eigenvectors"}], "}"}], "=", 
+     RowBox[{"Eigensystem", "[", "hamiltonian", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"diag", "=", 
+    RowBox[{"DiagonalMatrix", "[", 
+     RowBox[{"eigenvalues", ",", "0"}], "]"}]}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"The", " ", "diagonal", " ", "Hamiltonian"}], " ", "*)"}], 
+   "\[IndentingNewLine]", "eigenvectors", " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"The", " ", "energy", " ", "eigenvectors"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"2", "*", "Pi", "*", "eigenvalues"}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"units", " ", 
+     RowBox[{"rad", ".", 
+      SuperscriptBox["cm", 
+       RowBox[{"-", "1"}]]}]}], "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"basistransform", "=", 
+    RowBox[{
+     RowBox[{"Transpose", "[", "eigenvectors", "]"}], "  ", "//", 
+     "MatrixForm"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"basistransforminverse", " ", "=", " ", "eigenvectors"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"b", " ", "=", " ", 
+    RowBox[{"basistransform", ".", "basistransforminverse", " ", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+      "check", " ", "the", " ", "unitarity", " ", "of", " ", "the", " ", 
+       "basis", " ", "transformation", " ", "matrix"}], 
+      "*)"}]}]}]}]}]], "Input",
+ CellChangeTimes->{{3.7988117823818393`*^9, 3.7988117996883583`*^9}, {
+  3.798811890546833*^9, 3.798811941134596*^9}, {3.798811982499276*^9, 
+  3.7988121065150156`*^9}, {3.7988122501307096`*^9, 
+  3.798812254091446*^9}},ExpressionUUID->"912c3431-dc1d-40b9-bd7e-\
+a81819ef75f7"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"--", 
+     RowBox[{"--", "Diagonalize"}]}], " ", "the", " ", 
+    RowBox[{"system", "'"}], "s", " ", "Hamiltonian", " ", "for", " ", "a", 
+    " ", "2", " ", "molecule", " ", 
+    RowBox[{"system", ":", " ", 
+     RowBox[{"NON", "-", 
+      RowBox[{
+       RowBox[{"RESONANT", " ", "--"}], "--"}]}]}]}], "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"hamiltonian1", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"e1", ",", "j12"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j12", ",", "e2"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"hamiltonian1", " ", "//", "MatrixForm"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"eigenvalues", ",", "eigenvectors"}], "}"}], "=", 
+    RowBox[{"Eigensystem", "[", "hamiltonian1", "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"eigenvectorsT", "=", 
+    RowBox[{
+     RowBox[{"Transpose", "[", "eigenvectors", "]"}], " ", "//", 
+     "MatrixForm"}]}], "\[IndentingNewLine]", 
+   RowBox[{"2", "*", "Pi", "*", "eigenvalues"}], "\[IndentingNewLine]", 
+   RowBox[{"ToPolarCoordinates", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", "0.9786"}], ",", 
+      RowBox[{"-", "0.205773"}]}], "}"}], 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "Find", " ", "the", " ", "angle", " ", "of", " ", "the", " ", "rotation",
+       " ", "matrix", " ", "which", " ", "describes", " ", "the", " ", 
+      "basis", " ", "transformation", " ", "matrix"}], " ", 
+     "*)"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.7988117823818393`*^9, 3.7988118214435863`*^9}, {
+  3.798812124719919*^9, 3.798812210078638*^9}, {3.7988122647946057`*^9, 
+  3.7988122685072155`*^9}},ExpressionUUID->"5afcf82d-a4c6-4bd3-9158-\
+1a6817535d82"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"--", 
+     RowBox[{"--", " ", "Diagonalize"}]}], " ", "the", " ", 
+    RowBox[{"system", "'"}], "s", " ", "Hamiltonian", " ", "for", " ", "a", 
+    " ", "2", " ", "molecule", " ", 
+    RowBox[{"system", ":", " ", 
+     RowBox[{"NEAR", "-", 
+      RowBox[{
+       RowBox[{"RESONANT", " ", "--"}], "--"}]}]}]}], "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"hamiltonianres", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"e0", ",", "j01"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j01", ",", "e1"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"eigenvalues", ",", "eigenvectors"}], "}"}], "=", 
+    RowBox[{"Eigensystem", "[", "hamiltonianres", "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eigenvectorsT", "=", 
+     RowBox[{"Transpose", "[", "eigenvectors", "]"}]}], " ", ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"ToPolarCoordinates", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", "0.8273"}], ",", 
+      RowBox[{"-", "0.5618"}]}], "}"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"2", "*", "Pi", "*", "eigenvalues"}]}]}]], "Input",
+ CellChangeTimes->{{3.7988117823818393`*^9, 3.7988118349125013`*^9}, {
+  3.7988122176957717`*^9, 3.7988122288313594`*^9}, {3.798812271910805*^9, 
+  3.798812276255051*^9}},ExpressionUUID->"fc058ac4-f837-4442-876b-\
+737f022269ef"]
+},
+WindowSize->{1904, 997},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1286, 35, 101, "Input",ExpressionUUID->"21040572-7d22-498e-b370-9870fd1b31ea"],
+Cell[1847, 57, 3419, 85, 462, "Input",ExpressionUUID->"912c3431-dc1d-40b9-bd7e-a81819ef75f7"],
+Cell[5269, 144, 1886, 50, 250, "Input",ExpressionUUID->"5afcf82d-a4c6-4bd3-9158-1a6817535d82"],
+Cell[7158, 196, 1511, 41, 213, "Input",ExpressionUUID->"fc058ac4-f837-4442-876b-737f022269ef"]
+}
+]
+*)
+
